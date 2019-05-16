@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public UIManager ui_manager;
     // Start is called before the first frame update
     void Start()
     {
