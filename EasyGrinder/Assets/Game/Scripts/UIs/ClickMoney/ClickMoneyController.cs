@@ -11,7 +11,7 @@ public class ClickMoneyController : MonoBehaviour
     public Text text;
 
     public void ShowCoins(float count) {
-        text.text = "+"+count.ToString();
+        text.text = "+"+GameUtility.NumConversion(count);
         text.transform.DOLocalMoveY(100,0.8f);
         text.DOFade(0,0.8f);
         for (int i = 0; i < coins.Count; i++) {

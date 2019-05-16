@@ -38,16 +38,16 @@ public class TopUIController : MonoBehaviour
 
     public void UpdateUI() {
         var info = GetPlayerInfoManager().player_info;
-        if (info.assets != null) {
-            money.text = info.assets.money.ToString();
-            chip.text = info.assets.chip.ToString();
-            battery.text = info.assets.battery.ToString();
-            robot.text = info.assets.robot.ToString();
+        if (info.assets != null) {    
+            money.text = GameUtility.NumConversion(info.assets.money);
+            chip.text = GameUtility.NumConversion(info.assets.chip); 
+            battery.text = GameUtility.NumConversion(info.assets.battery); 
+            robot.text = GameUtility.NumConversion(info.assets.robot);
         }
     }
 
     public void MoneyRateUpdate(float rate) {
-        money_rate.text = rate.ToString() + "/s";
+        money_rate.text = GameUtility.NumConversion(rate) + "/s";
     }
 
     public CanvasGroup left_canvas_group;
@@ -92,8 +92,6 @@ public class TopUIController : MonoBehaviour
     {
 
     }
-
-
   
     public void OtherSetting() {
      

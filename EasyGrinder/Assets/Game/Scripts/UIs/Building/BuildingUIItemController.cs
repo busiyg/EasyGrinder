@@ -56,7 +56,7 @@ public class BuildingUIItemController : MonoBehaviour
                 }
                 current_buy_count = 1;
                 current_buy_Price = x1_p;
-                price_text.text = "1x " + x1_p.ToString();
+                price_text.text = "1x " + GameUtility.NumConversion(x1_p);
                 break;
             case 10:
                 if (current_money < x10_p)
@@ -69,7 +69,7 @@ public class BuildingUIItemController : MonoBehaviour
                 }
                 current_buy_count = 10;
                 current_buy_Price = x10_p;
-                price_text.text = "10x " + x10_p.ToString();
+                price_text.text = "10x " + GameUtility.NumConversion(x10_p);
                 break;
             case 100:
                 if (current_money < x100_p)
@@ -82,7 +82,7 @@ public class BuildingUIItemController : MonoBehaviour
                 }
                 current_buy_count = 100;
                 current_buy_Price = x100_p;
-                price_text.text = "100x " + x100_p.ToString();
+                price_text.text = "100x " + GameUtility.NumConversion(x100_p);
                 break;
             case 1000:
                 if (current_money < max_p)
@@ -95,7 +95,7 @@ public class BuildingUIItemController : MonoBehaviour
                 }
                 current_buy_count = (int)max_count;
                 current_buy_Price = max_p;
-                price_text.text =  max_count.ToString()+"x " + max_p.ToString();
+                price_text.text = max_count.ToString() + "x "+ GameUtility.NumConversion(max_p); 
                 break;
         }
     }

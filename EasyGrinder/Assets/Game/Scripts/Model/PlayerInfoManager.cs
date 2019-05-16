@@ -14,6 +14,7 @@ public class PlayerInfoManager : MonoBehaviour
     public TopUIController topUI_controller;
     public LeftUIController leftUI_controller;
     public BuildingUIController BuildingUI_controller;
+    public float addtest_money;
 
     public void Awake()
     {
@@ -38,7 +39,7 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void TestAddMoney()
     {
-        AddMoney(50000);
+        AddMoney(addtest_money);
     }
 
     public void TestUnlock()
