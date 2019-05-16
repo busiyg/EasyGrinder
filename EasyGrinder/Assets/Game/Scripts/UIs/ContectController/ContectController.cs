@@ -59,6 +59,7 @@ public class ContectController : MonoBehaviour
             InitHeight(0);
         }
         is_hide = !is_hide;
+        LayoutRebuild();
     }
 
     public void InitHeight(int count) {
@@ -72,5 +73,9 @@ public class ContectController : MonoBehaviour
             rect_transfrom.sizeDelta = new Vector2(rect_transfrom.sizeDelta.x, 50);
         }
       
+    }
+
+    public void LayoutRebuild() {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
     }
 }
