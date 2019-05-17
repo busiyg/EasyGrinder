@@ -68,6 +68,9 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Game\Scripts\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Game\Scripts\Event\EventConst.cs" />
+    <Compile Include="Assets\Game\Scripts\Event\MessageCenter.cs" />
     <Compile Include="Assets\Game\Scripts\GameConfig.cs" />
     <Compile Include="Assets\Game\Scripts\GameManager\BuildingManager.cs" />
     <Compile Include="Assets\Game\Scripts\GameManager\GameManager.cs" />
@@ -77,12 +80,15 @@
     <Compile Include="Assets\Game\Scripts\Model\PlayerInfoManager.cs" />
     <Compile Include="Assets\Game\Scripts\Scene\GameSceneManager.cs" />
     <Compile Include="Assets\Game\Scripts\Scene\LoadingManager.cs" />
+    <Compile Include="Assets\Game\Scripts\StaticController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\Building\BuildingUIController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\Building\BuildingUIItemController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\ClickMoney\ClickMoneyController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\ContectController\ContectController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\ContectController\ContentItemController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\LeftUI\LeftUIController.cs" />
+    <Compile Include="Assets\Game\Scripts\UIs\LeftUI\UpGradeController.cs" />
+    <Compile Include="Assets\Game\Scripts\UIs\TipsController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\TopUI\TopUIController.cs" />
     <Compile Include="Assets\Game\Scripts\UIs\UIManager.cs" />
     <Compile Include="Assets\Game\Scripts\Utility\GameUtility.cs" />
@@ -104,6 +110,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Game\Material\NewSurfaceShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/UnityProjects/EasyGrinder/EasyGrinder/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

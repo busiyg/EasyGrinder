@@ -28,7 +28,8 @@ public class LeftUIController : MonoBehaviour
     public GameObject event_page;
     public GameObject excavate_page;
     public GameObject ruin_page;
- 
+    public GameObject reborn_page;
+
 
 
     public PlayerInfoManager playerInfoManager;
@@ -85,6 +86,10 @@ public class LeftUIController : MonoBehaviour
             trophies_page.SetActive(false);
         }
 
+        if (reborn_page.activeSelf == true)
+        {
+            reborn_page.SetActive(false);
+        }
         if (event_page.activeSelf == true)
         {
             event_page.SetActive(false);
@@ -138,6 +143,28 @@ public class LeftUIController : MonoBehaviour
         else
         {
             trophies_page.SetActive(true);
+            showLeftPop();
+        }
+    }
+
+    public void On_reborn_button()
+    {
+        if (is_showed)
+        {
+            if (reborn_page.activeSelf == true)
+            {
+                HideLeftPop();
+                reborn_page.SetActive(false);
+            }
+            else
+            {
+                CloseOtherPage();
+                reborn_page.SetActive(true);
+            }
+        }
+        else
+        {
+            reborn_page.SetActive(true);
             showLeftPop();
         }
     }

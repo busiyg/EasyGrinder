@@ -17,6 +17,8 @@ public class TopUIController : MonoBehaviour
     public Text battery;
     public Text robot;
     public PlayerInfoManager playerInfoManager;
+    public GameObject static_page;
+    public GameObject SettingPage;
 
     private void Awake()
     {
@@ -25,6 +27,14 @@ public class TopUIController : MonoBehaviour
 
     void Start()
     {
+    }
+
+    public void ShowChipInfo() {
+        TipsController.Show("每个芯片加速50%,总共加速"+ (int)GetPlayerInfoManager().player_info.assets.chip*50+"%");
+    }
+
+    public void HideInfo() {
+        TipsController.hide();
     }
 
     public PlayerInfoManager GetPlayerInfoManager()
@@ -90,10 +100,23 @@ public class TopUIController : MonoBehaviour
 
     public void ShowStatic()
     {
-
+        if (static_page.activeSelf == true)
+        {
+            static_page.SetActive(false);
+        }
+        else {
+            static_page.SetActive(true);
+        }
     }
   
     public void OtherSetting() {
-     
+        if (SettingPage.activeSelf == true)
+        {
+            SettingPage.SetActive(false);
+        }
+        else
+        {
+            SettingPage.SetActive(true);
+        }
     }
 }

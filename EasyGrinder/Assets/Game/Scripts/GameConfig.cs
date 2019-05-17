@@ -12,6 +12,7 @@ public class GameConfig : MonoBehaviour
 
     public List<BuildingConfigItem> buildings;
     public List<SkillConfigItem> skills;
+    public List<UpgradeConfigItem> upgrades;
     public float building_price_increase_rate;
 
     private void Awake()
@@ -46,6 +47,18 @@ public class GameConfig : MonoBehaviour
         }
         return null;
     }
+
+    public UpgradeConfigItem GetUpGradeItemByID(int id)
+    {
+        for (int i = 0; i < upgrades.Count; i++)
+        {
+            if (upgrades[i].id == id)
+            {
+                return upgrades[i];
+            }
+        }
+        return null;
+    }
 }
 
 
@@ -57,6 +70,7 @@ public class BuildingConfigItem
     public string describe;
     public float base_price;
     public float base_production_rate;
+    public int next_upgrade_count;
     public int id;
     public Sprite sprite;
 }
@@ -67,4 +81,15 @@ public class SkillConfigItem
     public int id;
     public string title;
     public Sprite sprite;
+}
+
+[System.Serializable]
+public class UpgradeConfigItem
+{
+    public int id;
+    public string title;
+    public string describe;
+    public Sprite sprite;
+    public float price;
+
 }

@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4992720165650449160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -416,6 +416,9 @@ MonoBehaviour:
   max_p: 0
   max_count: 0
   production_rate: 0
+  current_buy_count: 0
+  current_buy_Price: 0
+  Count: 0
   ID: 0
 --- !u!114 &1569447479
 MonoBehaviour:

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
-public class BuildingUIItemController : MonoBehaviour
+public class BuildingUIItemController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Button button;
     public Image image;
@@ -21,6 +22,7 @@ public class BuildingUIItemController : MonoBehaviour
     public float production_rate;
     public int current_buy_count;
     public float current_buy_Price;
+    public int Count;
 
     public int ID;
 
@@ -100,18 +102,24 @@ public class BuildingUIItemController : MonoBehaviour
         }
     }
 
-    public void UpdateItem(string count, string percentage) {
+    public void UpdateItem(int count, string percentage,float rate) {
+        production_rate = rate;
         percentage_text.text = percentage;
-        count_text.text = count;
+        Count = count;
+        count_text.text = Count.ToString();
     }
 
     public void OnClickButton() {
-        PlayerInfoManager.GetInstance().AddBuilding(ID, current_buy_count, current_buy_Price);
+        PlayerInfoManager.GetInstance().AddBuilding(ID, current_buy_count, current_buy_Price, title_text.text);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        TipsController.Show("每个" + title_text.text + "增加" + GameUtility.NumConversion(production_rate)  + "金钱，一共增加"+ GameUtility.NumConversion(production_rate * Count));
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TipsController.hide();
     }
 }

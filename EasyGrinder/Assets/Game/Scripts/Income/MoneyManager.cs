@@ -57,11 +57,15 @@ public class MoneyManager : MonoBehaviour
         {
             for (int i =0;i< info.building_assets.Count;i++) {
                 if (info.building_assets[i].count>0) {
-                    var rate = GetGameConfig().GetBuildingItemByID(info.building_assets[i].id).base_production_rate;
+                    var rate = GetGameConfig().GetBuildingItemByID(info.building_assets[i].id).base_production_rate* info.building_assets[i].Upgrade_buff;
                     building_production_rate += (rate * info.building_assets[i].count);
                 }
             }
         }
+        if (info.assets.chip>=1) {
+            building_production_rate = building_production_rate * (1+ info.assets.chip*0.5f);
+        }
+       
 
         return building_production_rate;
     }

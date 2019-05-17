@@ -12,6 +12,7 @@ public class BuildingUIController : MonoBehaviour
 
     public PlayerInfoManager playerInfoManager;
     public GameConfig game_config;
+    public BuildingManager building_manager;
 
     public Dictionary<int, BuildingUIItemController> building_items = new Dictionary<int, BuildingUIItemController>();
     public BuildingUIItemController buildingUIItem_prefab;
@@ -44,6 +45,15 @@ public class BuildingUIController : MonoBehaviour
             game_config = GameConfig.GetInstance();
         }
         return game_config;
+    }
+
+    public BuildingManager GetBuildingManager()
+    {
+        if (building_manager == null)
+        {
+            building_manager = BuildingManager.GetInstance();
+        }
+        return building_manager;
     }
 
     public void BuyTypeChange() {
@@ -86,7 +96,24 @@ public class BuildingUIController : MonoBehaviour
                     comp.InitItem(item_data.title, item_data.sprite, info.building_assets[i].id);
                     comp.UpdatePrice(Prices);
                     comp.SwitchPrice(buy_type, current_money);
-                    comp.UpdateItem(info.building_assets[i].count.ToString(), "0%");
+                    comp.UpdateItem(info.building_assets[i].count, "0%", item_data.base_production_rate* info.building_assets[i].Upgrade_buff);
+
+                    if (info.building_assets[i].next_upgrade_count==0) {
+                        info.building_assets[i].next_upgrade_count += item_data.next_upgrade_count;
+                    }
+
+                    if (info.building_assets[i].count >= info.building_assets[i].next_upgrade_count)
+                    {
+                        var upgrade = new UnLockUpgradeClass();
+                        upgrade.id = info.building_assets[i].id;
+                        upgrade.level = (info.building_assets[i].next_upgrade_count / item_data.next_upgrade_count);
+                        var data = GetGameConfig().GetUpGradeItemByID(info.building_assets[i].id);
+                        upgrade.title = data.title;
+                        upgrade.detail = data.describe;
+                        info.building_assets[i].next_upgrade_count += item_data.next_upgrade_count;
+                        GetPlayerInfoManager().AddUnlockUpgrade(upgrade);
+                    }
+
                     building_items.Add(info.building_assets[i].id, item);
                 }
                 else {
@@ -95,7 +122,28 @@ public class BuildingUIController : MonoBehaviour
                     var Prices = CalculatePrices(item_data.base_price, info.building_assets[i].count, current_money, building_price_increase_rate);
                     item.UpdatePrice(Prices);
                     item.SwitchPrice(buy_type, current_money);
-                    item.UpdateItem(info.building_assets[i].count.ToString(),"0%");
+                    if (info.building_assets[i].count > 0)
+                    {
+                        GetBuildingManager().ShowHouse(info.building_assets[i].id % 10, item_data.title);
+                    }
+                    item.UpdateItem(info.building_assets[i].count, "0%", item_data.base_production_rate * info.building_assets[i].Upgrade_buff);
+
+                    if (info.building_assets[i].next_upgrade_count == 0)
+                    {
+                        info.building_assets[i].next_upgrade_count += item_data.next_upgrade_count;
+                    }
+
+                    if (info.building_assets[i].count >= info.building_assets[i].next_upgrade_count)
+                    {
+                        var upgrade = new UnLockUpgradeClass();
+                        upgrade.id = info.building_assets[i].id;
+                        upgrade.level = (info.building_assets[i].next_upgrade_count / item_data.next_upgrade_count);
+                        var data = GetGameConfig().GetUpGradeItemByID(info.building_assets[i].id);
+                        upgrade.title = data.title;
+                        upgrade.detail = data.describe;
+                        info.building_assets[i].next_upgrade_count += item_data.next_upgrade_count;
+                        GetPlayerInfoManager().AddUnlockUpgrade(upgrade);
+                    }
                 }
             }
         }
